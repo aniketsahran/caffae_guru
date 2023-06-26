@@ -27,7 +27,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect("mongodb://localhost:27017/userDB", {useNewUrlParser: true});
+mongoose.connect("mongodb://0.0.0.0:27017/userDB", {useNewUrlParser: true,});
 mongoose.set("useCreateIndex", true);
 
 const userSchema = new mongoose.Schema ({
@@ -64,13 +64,16 @@ passport.use(new GoogleStrategy({
     console.log(profile);
 
     User.findOrCreate({ googleId: profile.id }, function (err, user) {
-      return cb(err, user);
+      user.profileImage = profile.photos[0].value; 
+      user.save(function(err) {
+        return cb(err, user);
+      });
     });
   }
 ));
 
 app.get("/", function(req, res){
-  res.render("home");
+  res.render("index");
 });
 
 app.get("/auth/google",
@@ -91,6 +94,9 @@ app.get("/login", function(req, res){
 app.get("/register", function(req, res){
   res.render("register");
 });
+app.get("/application", function(req, res){
+  res.render("application");
+});
 
 app.get("/secrets", function(req, res){
   User.find({"secret": {$ne: null}}, function(err, foundUsers){
@@ -98,7 +104,7 @@ app.get("/secrets", function(req, res){
       console.log(err);
     } else {
       if (foundUsers) {
-        res.render("secrets", {usersWithSecrets: foundUsers});
+        res.render("secrets", {usersWithSecrets: foundUsers, currentUser:req.user,profileImage: req.user.profileImage});
       }
     }
   });

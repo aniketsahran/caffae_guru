@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>FormWizard_v4</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/static/assets/css/apply.css">
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+		}
+
+		.wrapper {
+			max-width: 500px;
+			margin: 0 auto;
+			padding: 20px;
+		}
+
+		h3 {
+			margin: 0;
+		}
+
+		.form-row {
+			margin-bottom: 20px;
+		}
+
+		input, select {
+			width: 100%;
+			padding: 10px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+		}
+
+		button {
+			background-color: #4CAF50;
+			color: #fff;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+
+		button:hover {
+			background-color: #45a049;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<form action="/submit" method="post">
+			<div class="form-header">
+				<h3>Register</h3>
+			</div>
+			<div id="wizard">
+				<!-- SECTION 1 -->
+				<h4></h4>
+				<section>
+					<h3>Personal Information</h3>
+					<div class="form-row">
+						<label for="first-name">First name:</label>
+						<div class="form-holder">
+							<input type="text" id="first-name" name="first-name" class="form-control">
+						</div>
+					</div>
+					<div class="form-row">
+						<label for="last-name">Last name:</label>
+						<div class="form-holder">
+							<input type="text" id="last-name" name="last-name" class="form-control">
+						</div>
+					</div>
+					<div class="form-row" style="margin-bottom: 50px;">
+						<label for="gender">Gender:</label>
+						<div class="form-holder">
+							<div class="checkbox-circle">
+								<label class="male">
+									<input type="radio" id="gender-male" name="gender" value="male" checked> Male<br>
+									<span class="checkmark"></span>
+								</label>
+								<label>
+									<input type="radio" id="gender-female" name="gender" value="female"> Female<br>
+									<span class="checkmark"></span>
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="form-row" style="margin-bottom: 26px;">
+						<label for="age">Age:</label>
+						<div class="form-holder">
+							<select id="age" name="age" class="form-control">
+								<option value="18-22" class="option">18-22 yrs</option>
+								<option value="22-25" class="option">22-25 yrs</option>
+								<option value="25-30" class="option">25-30 yrs</option>
+								<option value="30-40" class="option">30-40 yrs</option>
+								<option value="40+" class="option">40+ yrs</option>
+							</select>
+							<i class="zmdi zmdi-caret-down"></i>
+						</div>
+					</div>
+				</section>
+
+				<!-- SECTION 2 -->
+				<h4></h4>
+				<section>
+					<h2>Educational qualification</h2>
+					<br>
+					<div class="form-row">
+						<label for="education-status">Education status:</label>
+						<div class="form-holder">
+							<select id="education-status" name="education-status" class="form-control">
+								<option value="ongoing" class="option">Ongoing</option>
+								<option value="completed" class="option">Completed</option>
+							</select>
+							<i class="zmdi zmdi-caret-down"></i>
+						</div>
+					</div>
+					<div class="form-row">
+						<label for="highest-qualification">Highest educational qualification:</label>
+						<div class="form-holder">
+							<input type="text" id="highest-qualification" name="highest-qualification" class="form-control">
+						</div>
+					</div>
+					<div class="form-row" style="margin-bottom: 3.4vh">
+						<label for="university">University/Institute:</label>
+						<div class="form-holder">
+							<input type="text" id="university" name="university" class="form-control">
+						</div>
+					</div>
+				</section>
+
+				<!-- SECTION 3 -->
+				<h4></h4>
+				<section>
+					<h2>Teaching Experience</h2>
+						<br>
+						<div class="form-row" style="margin-bottom: 38px">
+							<label for="employment-status">Current Employment status:</label>
+							<div class="form-holder">
+								<select id="employment-status" name="employment-status" class="form-control">
+									<option value="student" class="option">Student</option>
+									<option value="teaching-professional" class="option">Teaching Professional</option>
+									<option value="non-teaching-professional" class="option">Non-Teaching Professional</option>
+								</select>
+								<i class="zmdi zmdi-caret-down"></i>
+							</div>
+						</div>
+						<div class="form-row" style="margin-bottom: 38px">
+							<label for="teaching-experience">Teaching Experience:</label>
+							<div class="form-holder">
+								<select id="teaching-experience" name="teaching-experience" class="form-control">
+									<option value="volunteer" class="option">Volunteer</option>
+									<option value="professional" class="option">Professional</option>
+								</select>
+								<i class="zmdi zmdi-caret-down"></i>
+							</div>
+						</div>
+						<div class="form-row checkbox-circle" style="margin-bottom: 48px;">
+							<label>
+								<input type="checkbox" id="terms-conditions" name="terms-conditions" checked> I agree to all statements in Terms & Conditions
+								<span class="checkmark"></span>
+							</label>
+						</div>
+				</section>
+
+				<!-- Submit Button -->
+				<div class="button-row">
+					<button type="submit">Submit</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	
+</body>
+</html>
